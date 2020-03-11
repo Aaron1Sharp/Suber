@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
 
     private Transform _player;
     private int _lastX;
-
     void Start()
     {
         _offset = new Vector2(Mathf.Abs(_offset.x), _offset.y);
