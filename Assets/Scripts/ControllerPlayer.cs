@@ -18,13 +18,9 @@ public class ControllerPlayer : MonoBehaviour
     void FixedUpdate()
     {
         _isGrounded = Physics2D.OverlapCircle(
-            _groundCheck.position,
-            _checkRadius,
-            _whatIsGround);
+            _groundCheck.position, _checkRadius, _whatIsGround);
         _moveInput = Input.GetAxis("Horizontal");
-        _rigidbody2D.velocity = new Vector2(
-            _moveInput * _speed,
-            _rigidbody2D.velocity.y);
+        _rigidbody2D.velocity = new Vector2(_moveInput * _speed, _rigidbody2D.velocity.y);
         if (_faceRight == false
             && _moveInput > 0
             || _faceRight == true

@@ -1,24 +1,32 @@
 ﻿using UnityEngine;
+using CustomTilemap;
+
 public class TerrainGenerate : MonoBehaviour
 {
-    public int _height, _width;
-    public GameObject Cell;
-    public Transform Zero;
-    void Start() => Generate();
-    void Generate()
+    public int Width;
+    //public int _groundHeight;
+    public GroundTile Tile;
+
+    public void Start()
     {
-        int _groundHeight = 5;
-        for (int x = 0; x < _width; x++)
+        ITileMap _tilemap = Generate();
+        GetComponent<TilemapRender>().Render(_tilemap);
+    }
+
+    public ITileMap Generate()
+    {
+        HeightMapBasedTilemap tilemap = new HeightMapBasedTilemap(Width, Tile);
+        int _groundHeight = 3;
+        for (int x = 0; x < Width; x++)
         {
-            if (x % 2 == 0)
+            if (x % 2 != 0)
             {
+                _groundHeight = 3;
                 _groundHeight += Random.Range(-1, 2);
             }
-            for (int y = _groundHeight; y > 0; y--)
-            {
-                Instantiate(Cell, Zero).transform.localPosition = new Vector3(x, y, 0);
-            }
+            tilemap.SetHeight(x, _groundHeight);
         }
+        return tilemap;
         
     }
 }

@@ -65,8 +65,13 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
+    <Compile Include="Assets\Scripts\GroundTile.cs" />
+    <Compile Include="Assets\Scripts\HeightMapBasedTilemap.cs" />
+    <Compile Include="Assets\Scripts\ICell.cs" />
+    <Compile Include="Assets\Scripts\ITileMap.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\TerrainGenerate.cs" />
+    <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
