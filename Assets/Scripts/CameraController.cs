@@ -24,7 +24,8 @@ public class CameraController : MonoBehaviour
             ? new Vector3(
                 _player.position.x - _offset.x,
                 _player.position.y + _offset.y,
-                transform.position.z)           //вектор z нужно обьявлять именно transform что бы камера не фокусилась на z = 0
+                transform.position.z)           
+            //вектор z нужно обьявлять именно transform что бы камера не фокусилась на z = 0
             : new Vector3(
                 _player.position.x + _offset.x,
                 _player.position.y + _offset.y,
@@ -54,7 +55,10 @@ public class CameraController : MonoBehaviour
                     _player.position.y + _offset.y,
                     transform.position.z);
 
-            Vector3 _currentPosition = Vector3.Lerp(transform.position, _target, _dumping * Time.deltaTime);
+            Vector3 _currentPosition = Vector3.Lerp(
+                transform.position,
+                _target,
+                _dumping * Time.deltaTime);
             transform.position = _currentPosition;
         }
     }

@@ -3,15 +3,13 @@ public class ControllerPlayer : MonoBehaviour
 {
     public float _speed, _jumpForse, _moveInput, _checkRadius;
     public int _extraJumpValue;
-
-    private bool _faceRight = true, _isGrounded;
-    private int _extraJump;
-
+    public bool _isGrounded;
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
 
+    private bool _faceRight = true;
+    private int _extraJump;
     private Rigidbody2D _rigidbody2D;
-
     void Start()
     {
         _extraJump = _extraJumpValue;
@@ -19,11 +17,18 @@ public class ControllerPlayer : MonoBehaviour
     }
     void FixedUpdate()
     {
-        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _whatIsGround);
+        _isGrounded = Physics2D.OverlapCircle(
+            _groundCheck.position,
+            _checkRadius,
+            _whatIsGround);
         _moveInput = Input.GetAxis("Horizontal");
-        _rigidbody2D.velocity = new Vector2(_moveInput * _speed, _rigidbody2D.velocity.y);
-
-        if (_faceRight == false && _moveInput > 0 || _faceRight == true && _moveInput < 0)
+        _rigidbody2D.velocity = new Vector2(
+            _moveInput * _speed,
+            _rigidbody2D.velocity.y);
+        if (_faceRight == false
+            && _moveInput > 0
+            || _faceRight == true
+            && _moveInput < 0)
         { 
             Flip();
         }
@@ -36,14 +41,17 @@ public class ControllerPlayer : MonoBehaviour
             _extraJump = _extraJumpValue;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
+        if (Input.GetKeyDown(KeyCode.W)
+            && _extraJump > 0)
         {
             _rigidbody2D.velocity = Vector2.up * _jumpForse;
             _extraJump--;
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.W) && _extraJump == 0 && _isGrounded == true)
+            if (Input.GetKeyDown(KeyCode.W)
+                && _extraJump == 0
+                && _isGrounded == true)
             {
                 _rigidbody2D.velocity = Vector2.up * _jumpForse;
             }
@@ -62,12 +70,10 @@ public class ControllerPlayer : MonoBehaviour
         {
             _extraJumpValue++;
         }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (_extraJumpValue != 0)
-            {
+        else if (Input.GetKeyDown(KeyCode.Q)
+                 && _extraJumpValue != 0)
+             {
                 _extraJumpValue--;
-            }
-        }
+             }
     }
 }

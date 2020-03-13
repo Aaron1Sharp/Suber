@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\TerrainGenerate.cs" />
+    <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

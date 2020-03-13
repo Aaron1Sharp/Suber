@@ -1,23 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 public class TerrainGenerate : MonoBehaviour
 {
+    public int _height, _width;
     public GameObject Cell;
     public Transform Zero;
-    public int Height, Widht;
-    public void Start()
+    void Start() => Generate();
+    void Generate()
     {
-        Generate();
-    }
-    public void Generate()
-    {
-        
-        for (int x = 0; x < Widht; x++)
+        int _groundHeight = 5;
+        for (int x = 0; x < _width; x++)
         {
-          var cell = Instantiate(Cell, Zero);
-            cell.transform.localPosition = new Vector3(x, 0, 0);
+            if (x % 2 == 0)
+            {
+                _groundHeight += Random.Range(-1, 2);
+            }
+            for (int y = _groundHeight; y > 0; y--)
+            {
+                Instantiate(Cell, Zero).transform.localPosition = new Vector3(x, y, 0);
+            }
         }
+        
     }
 }
