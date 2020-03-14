@@ -9,13 +9,8 @@ public class WallSlider : MonoBehaviour
     void Update()
     {
         Physics2D.queriesStartInColliders = false;
-        RaycastHit2D _hit = Physics2D.Raycast(
-            transform.position,
-            Vector2.right * transform.localScale.x,
-            _distanceToWall);
-
         if (!_player._isGrounded
-            && _hit.collider != null
+            && Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, _distanceToWall).collider != null
             && GetComponent<Rigidbody2D>().velocity.y < _speedSlide)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, _speedSlide);

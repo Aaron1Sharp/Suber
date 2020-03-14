@@ -7,27 +7,45 @@ namespace CustomTilemap
         public Sprite Top, Left, Right, Bottom, TopLeft, TopRight, Other, BottomRight, BottomLeft;
         public void Refresh(Vector2Int _position, ITileMap _tileMap, GameObject gameObject)
         {
-            SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-            renderer.sprite = Other;
+            SpriteRenderer _CreatedTile = gameObject.GetComponent<SpriteRenderer>();
+            _CreatedTile.sprite = Other;
 
                      if(Exist(_position + Vector2Int.right, _tileMap)
                      && Exist(_position + Vector2Int.left,  _tileMap)
                      &&!Exist(_position + Vector2Int.up,    _tileMap))
                      { 
-                        renderer.sprite = Top;
+                        _CreatedTile.sprite = Top;
                      }
                 else if(Exist(_position + Vector2Int.right, _tileMap)
                      &&!Exist(_position + Vector2Int.left,  _tileMap)
                      &&!Exist(_position + Vector2Int.up,    _tileMap))
                      {
-                         renderer.sprite = TopLeft;
+                         _CreatedTile.sprite = TopLeft;
                      }
                else if(!Exist(_position + Vector2Int.right, _tileMap)
                     &&  Exist(_position + Vector2Int.left,  _tileMap)
                     && !Exist(_position + Vector2Int.up,    _tileMap))
                     {
-                        renderer.sprite = TopRight;
+                        _CreatedTile.sprite = TopRight;
                     }
+               else if(Exist(_position + Vector2Int.right, _tileMap)
+                    && Exist(_position + Vector2Int.left,  _tileMap)
+                    &&!Exist(_position + Vector2Int.down,  _tileMap))
+                    {
+                        _CreatedTile.sprite = Bottom;
+                    }
+               else if(Exist(_position + Vector2Int.right, _tileMap)
+                    &&!Exist(_position + Vector2Int.left,  _tileMap)
+                    &&!Exist(_position + Vector2Int.down,  _tileMap))
+                    {
+                        _CreatedTile.sprite = BottomLeft;
+                    }
+              else if(!Exist(_position + Vector2Int.right, _tileMap)
+                   && Exist(_position + Vector2Int.left,   _tileMap)
+                   &&!Exist(_position + Vector2Int.down,   _tileMap))
+                   {
+                        _CreatedTile.sprite = BottomRight;
+                   }
         }
         public bool Exist(Vector2Int position, ITileMap tileMap)
         {

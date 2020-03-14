@@ -66,8 +66,7 @@ public class ControllerPlayer : MonoBehaviour
         {
             _extraJumpValue++;
         }
-        else if (Input.GetKeyDown(KeyCode.Q)
-                 && _extraJumpValue != 0)
+        else if (Input.GetKeyDown(KeyCode.Q) && _extraJumpValue != 0)
              {
                 _extraJumpValue--;
              }

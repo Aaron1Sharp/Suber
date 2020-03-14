@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
+using System.Linq;
 namespace CustomTilemap
 {
     public class TilemapRender : MonoBehaviour
     {
         public void Render(ITileMap _tilemap)
         {
-            foreach (Transform child in transform)
-            {
-                Destroy(child.gameObject);
-            }
+            Clear();
+
             for (int x = 0; x < _tilemap.Width; x++)
             {
-                for (int y = 0; y < _tilemap.Height; y++)
+                for (int y = 0; y <= _tilemap.Height; y++)
                 {
                     var _cell = _tilemap.GetCell(new Vector2Int(x, y));
                     if (_cell != null)
@@ -22,6 +21,19 @@ namespace CustomTilemap
                 }
             }
         }
+
+        public void Clear()
+        {
+            foreach (Transform child in transform.OfType<Transform>().ToList())
+            {
+#if UNITY_EDITOR 
+                DestroyImmediate(child.gameObject);
+#else
+                Destroy(child.gameObject);
+#endif
+            }
+        }
+
         public GameObject CreateEmpty(Vector2Int position)
         {
             GameObject result = new GameObject(position.ToString());

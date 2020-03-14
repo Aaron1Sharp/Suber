@@ -7,5 +7,6 @@ namespace CustomTilemap
         int Width { get; }
         int Height { get; }
         ICell GetCell(Vector2Int _position);
+        Vector2[] GetCloseMash();
     }
 }

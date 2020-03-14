@@ -23,37 +23,33 @@ public class CameraController : MonoBehaviour
         transform.position = _playerIsLeft
             ? new Vector3(
                 _player.position.x - _offset.x,
-                _player.position.y + _offset.y,
-                transform.position.z)           
+                _player.position.y + _offset.y, transform.position.z)           
             //вектор z нужно обьявлять именно transform что бы камера не фокусилась на z = 0
             : new Vector3(
                 _player.position.x + _offset.x,
-                _player.position.y + _offset.y,
-                transform.position.z);
+                _player.position.y + _offset.y, transform.position.z);
     }
     void Update()
     {
         if (_player)
         {
-            int _currentX = Mathf.RoundToInt(_player.position.x);
-            if (_currentX > _lastX)
+            if (Mathf.RoundToInt(_player.position.x) > _lastX)
             {
                 _isLeft = false;
             }
-            else if (_currentX < _lastX)
+            else if (Mathf.RoundToInt(_player.position.x) < _lastX)
             {
                 _isLeft = true;
             }
             _lastX = Mathf.RoundToInt(_player.position.x);
+
             Vector3 _target = _isLeft
                 ? new Vector3(
                     _player.position.x - _offset.x,
-                    _player.position.y + _offset.y,
-                    transform.position.z)
+                    _player.position.y + _offset.y, transform.position.z)
                 : new Vector3(
                     _player.position.x + _offset.x,
-                    _player.position.y + _offset.y,
-                    transform.position.z);
+                    _player.position.y + _offset.y, transform.position.z);
 
             Vector3 _currentPosition = Vector3.Lerp(
                 transform.position,
