@@ -23,6 +23,6 @@ public class PlayerAnimation : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
             _animator.SetTrigger("Jump");
-        }
+        }    
     }
 }
