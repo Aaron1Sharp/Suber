@@ -20,7 +20,7 @@ public class PlayerAnimation : MonoBehaviour
         {
             _animator.SetBool("isWalk", false);
         }
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             _animator.SetTrigger("Jump");
         }    

@@ -11,23 +11,17 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        //animator.SetBool("Damage", false);
         _fill = 1f;
     }
-
-    // Update is called once per frame
     void Update()
     {
         _bar.fillAmount = _fill;
-       
         if (Input.GetKeyDown(KeyCode.F))
         {
             _fill -= 0.1f;
-            animator.Play("TakeDamage");
+            animator.Play("DamageGlitch");
+            
         }
 
-        
     }
-
-   
 }
