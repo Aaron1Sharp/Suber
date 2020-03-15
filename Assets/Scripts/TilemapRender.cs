@@ -26,18 +26,18 @@ namespace CustomTilemap
         {
             foreach (Transform child in transform.OfType<Transform>().ToList())
             {
-#if UNITY_EDITOR 
+            #if UNITY_EDITOR 
                 DestroyImmediate(child.gameObject);
-#else
+            #else
                 Destroy(child.gameObject);
-#endif
+            #endif
             }
         }
 
         public GameObject CreateEmpty(Vector2Int position)
         {
             GameObject result = new GameObject(position.ToString());
-            var transform = result.GetComponent<Transform>();
+            Transform transform = result.GetComponent<Transform>();
             transform.parent = GetComponent<Transform>();
             transform.localPosition = new Vector3(position.x, position.y, 0);
             result.AddComponent<SpriteRenderer>();

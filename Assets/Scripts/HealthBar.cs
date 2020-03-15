@@ -1,27 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-
 public class HealthBar : MonoBehaviour
 {
-    public Image _bar;
+    const float _fillPathValue = 0.1f;
+    const float _animatorSpeedPartValue = 0.05f;
     public float _fill;
-    public Animator animator;
+    Animator animator;
+    public Image _HPBar;
+    public GameObject _canvas;
     void Start()
     {
-        animator = GetComponent<Animator>();
         _fill = 1f;
+        animator = GetComponent<Animator>();
+        animator.speed = _animatorSpeedPartValue;
     }
     void Update()
     {
-        _bar.fillAmount = _fill;
+        _HPBar.fillAmount = _fill;
         if (Input.GetKeyDown(KeyCode.F))
         {
-            _fill -= 0.1f;
-            animator.Play("DamageGlitch");
-            
+            _fill -= _fillPathValue;
+            animator.speed += _animatorSpeedPartValue;
+            if (_fill <= 0) 
+            {
+                _canvas.SetActive(false);
+            }
         }
-
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            _fill += _fillPathValue;
+            animator.speed -= _animatorSpeedPartValue;
+        }
     }
 }

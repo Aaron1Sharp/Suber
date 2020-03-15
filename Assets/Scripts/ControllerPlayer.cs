@@ -17,14 +17,11 @@ public class ControllerPlayer : MonoBehaviour
     }
     void FixedUpdate()
     {
-        _isGrounded = Physics2D.OverlapCircle(
-            _groundCheck.position, _checkRadius, _whatIsGround);
+        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _whatIsGround);
         _moveInput = Input.GetAxis("Horizontal");
         _rigidbody2D.velocity = new Vector2(_moveInput * _speed, _rigidbody2D.velocity.y);
-        if (_faceRight == false
-            && _moveInput > 0
-            || _faceRight == true
-            && _moveInput < 0)
+        if (_faceRight == false && _moveInput > 0
+         || _faceRight == true  && _moveInput < 0)
         { 
             Flip();
         }
@@ -37,12 +34,12 @@ public class ControllerPlayer : MonoBehaviour
             _extraJump = _extraJumpValue;
         }
 
-        if (Input.GetKeyDown(KeyCode.W)
-            && _extraJump > 0)
+        if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
         {
             _rigidbody2D.velocity = Vector2.up * _jumpForse;
             _extraJump--;
         }
+
         else
         {
             if (Input.GetKeyDown(KeyCode.W)
