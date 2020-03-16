@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 public class ControllerPlayer : MonoBehaviour
 {
     public float _speed, _jumpForse, _moveInput, _checkRadius;
@@ -6,10 +7,12 @@ public class ControllerPlayer : MonoBehaviour
     public bool _isGrounded;
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
+    public GameObject _dustFromTheGround;
 
     private bool _faceRight = true;
     private int _extraJump;
     private Rigidbody2D _rigidbody2D;
+    private EnemyFollow enemyFollow;
     void Start()
     {
         _extraJump = _extraJumpValue;
@@ -21,8 +24,8 @@ public class ControllerPlayer : MonoBehaviour
         _moveInput = Input.GetAxis("Horizontal");
         _rigidbody2D.velocity = new Vector2(_moveInput * _speed, _rigidbody2D.velocity.y);
         if (_faceRight == false && _moveInput > 0
-         || _faceRight == true  && _moveInput < 0)
-        { 
+         || _faceRight == true && _moveInput < 0)
+        {
             Flip();
         }
     }
@@ -36,6 +39,7 @@ public class ControllerPlayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
         {
+            Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);
             _rigidbody2D.velocity = Vector2.up * _jumpForse;
             _extraJump--;
         }
@@ -64,8 +68,20 @@ public class ControllerPlayer : MonoBehaviour
             _extraJumpValue++;
         }
         else if (Input.GetKeyDown(KeyCode.Q) && _extraJumpValue != 0)
-             {
-                _extraJumpValue--;
-             }
+        {
+            _extraJumpValue--;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        /*(Input.GetKey(KeyCode.R)*//* && collision.gameObject.name == "EnemyFollow"*//*)
+
+           SceneManager.LoadScene(0);*/
+
+        if (collision.gameObject.name == "EnemyFollow")
+        {
+            Destroy(collision.gameObject);
+            //sSceneManager.LoadScene(0);
+        }
     }
 }

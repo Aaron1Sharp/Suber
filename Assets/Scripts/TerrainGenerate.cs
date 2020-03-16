@@ -9,12 +9,12 @@ public class TerrainGenerate : MonoBehaviour
     [SerializeField] private bool _isGenerateOnStart = false;
     public void Start()
     {
+        //InvokeRepeating("GenerateAndRender", 0, 5);
         if (_isGenerateOnStart)
         {  
             GenerateAndRender();
         }
     }
-
     public void GenerateAndRender()
     {
         ITileMap _tilemap = Generate();

@@ -65,6 +65,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
+    <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
+    <Compile Include="Assets\Scripts\DestroyObject.cs" />
+    <Compile Include="Assets\Scripts\EnemyFollow.cs" />
     <Compile Include="Assets\Scripts\GroundTile.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\HeightMapBasedTilemap.cs" />
@@ -74,7 +77,7 @@
     <Compile Include="Assets\Scripts\TerrainGenerate.cs" />
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
-    <Compile Include="Assets\hea.cs" />
+    <Compile Include="Assets\Scripts\hea.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
