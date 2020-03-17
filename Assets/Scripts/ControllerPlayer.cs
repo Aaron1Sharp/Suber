@@ -8,7 +8,7 @@ public class ControllerPlayer : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
     public GameObject _dustFromTheGround;
-
+    
     private bool _faceRight = true;
     private int _extraJump;
     private Rigidbody2D _rigidbody2D;
@@ -72,16 +72,11 @@ public class ControllerPlayer : MonoBehaviour
             _extraJumpValue--;
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
+   /* public void OnCollisionStay2D(Collision2D collision)
     {
-        /*(Input.GetKey(KeyCode.R)*//* && collision.gameObject.name == "EnemyFollow"*//*)
-
-           SceneManager.LoadScene(0);*/
-
-        if (collision.gameObject.name == "EnemyFollow")
+        if (collision.gameObject.name == "EnemyFollow" && Input.GetKey(KeyCode.R)) 
         {
-            Destroy(collision.gameObject);
-            //sSceneManager.LoadScene(0);
+            enemyFollow.TakeDamage();
         }
-    }
+    }*/
 }

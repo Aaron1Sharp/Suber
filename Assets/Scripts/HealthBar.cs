@@ -8,20 +8,19 @@ public class HealthBar : MonoBehaviour
     Animator animator;
     public Image _HPBar;
     public GameObject _canvas;
-    void Start()
+    public void Start()
     {
         _fill = 1f;
         animator = GetComponent<Animator>();
         animator.speed = _animatorSpeedPartValue;
     }
-    void Update()
+    public void Update()
     {
         _HPBar.fillAmount = _fill;
         if (Input.GetKeyDown(KeyCode.F))
         {
-            _fill -= _fillPathValue;
-            animator.speed += _animatorSpeedPartValue;
-            if (_fill <= 0) 
+            FastAnimationHPbarAndTakeHealth();
+            if (_fill <= 0)
             {
                 _canvas.SetActive(false);
             }
@@ -31,5 +30,11 @@ public class HealthBar : MonoBehaviour
             _fill += _fillPathValue;
             animator.speed -= _animatorSpeedPartValue;
         }
+    }
+
+    public void FastAnimationHPbarAndTakeHealth()
+    {
+        _fill -= _fillPathValue;
+        animator.speed += _animatorSpeedPartValue;
     }
 }
