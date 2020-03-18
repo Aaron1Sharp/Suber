@@ -9,7 +9,6 @@ public class TerrainGenerate : MonoBehaviour
     [SerializeField] private bool _isGenerateOnStart = false;
     public void Start()
     {
-        //InvokeRepeating("GenerateAndRender", 0, 5);
         if (_isGenerateOnStart)
         {  
             GenerateAndRender();
@@ -21,7 +20,6 @@ public class TerrainGenerate : MonoBehaviour
         GetComponent<TilemapRender>().Render(_tilemap);
         GetComponent<PolygonCollider2D>().points = _tilemap.GetCloseMash();
     }
-
     public ITileMap Generate()
     {
         HeightMapBasedTilemap tilemap = new HeightMapBasedTilemap(Width, Tile);
@@ -35,6 +33,5 @@ public class TerrainGenerate : MonoBehaviour
             tilemap.SetHeight(x, _groundHeight);
         }
         return tilemap;
-        
     }
 }

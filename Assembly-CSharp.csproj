@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Free Pixel Art Forest\Demo\MoveBackground.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
     <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Compile Include="Assets\Scripts\hea.cs" />
+    <None Include="Assets\Free Pixel Art Forest\Contact.txt" />
+    <None Include="Assets\Free Pixel Art Forest\Lisense.txt" />
+    <None Include="Assets\Free Pixel Art Forest\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

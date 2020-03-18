@@ -9,7 +9,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
     void Update()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))

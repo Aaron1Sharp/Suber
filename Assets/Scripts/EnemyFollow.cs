@@ -29,27 +29,12 @@ public class EnemyFollow : MonoBehaviour
         {
             _timeBetweenShots -= Time.deltaTime;
         }
+
         if (Vector2.Distance(transform.position, FollowTarget.position) > _stoppingDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, FollowTarget.position,
                                                      _speedFollowEnemy * Time.deltaTime);
-        }
-       /*
-        * 
-        * Отталкивает противника при приближеннии игрока
-        * 
-        *else if (Vector2.Distance(transform.position, FollowTarget.position) < _stoppingDistance
-             &&  Vector2.Distance(transform.position, FollowTarget.position) > _retreatsDistance)
-             {
-                transform.position = transform.position;
-             }
-        else if (Vector2.Distance(transform.position, FollowTarget.position) < _retreatsDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, FollowTarget.position,
-                                                     -_speedFollowEnemy * Time.deltaTime);
-        }
-        */
-        
+        }      
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -72,3 +57,18 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 }
+/*
+        * 
+        * Отталкивает противника при приближеннии игрока
+        * 
+        *else if (Vector2.Distance(transform.position, FollowTarget.position) < _stoppingDistance
+             &&  Vector2.Distance(transform.position, FollowTarget.position) > _retreatsDistance)
+             {
+                transform.position = transform.position;
+             }
+        else if (Vector2.Distance(transform.position, FollowTarget.position) < _retreatsDistance)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, FollowTarget.position,
+                                                     -_speedFollowEnemy * Time.deltaTime);
+        }
+        */

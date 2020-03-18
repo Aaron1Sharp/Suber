@@ -7,7 +7,6 @@ namespace CustomTilemap
         public void Render(ITileMap _tilemap)
         {
             Clear();
-
             for (int x = 0; x < _tilemap.Width; x++)
             {
                 for (int y = 0; y <= _tilemap.Height; y++)
@@ -21,7 +20,6 @@ namespace CustomTilemap
                 }
             }
         }
-
         public void Clear()
         {
             foreach (Transform child in transform.OfType<Transform>().ToList())
@@ -33,7 +31,6 @@ namespace CustomTilemap
             #endif
             }
         }
-
         public GameObject CreateEmpty(Vector2Int position)
         {
             GameObject result = new GameObject(position.ToString());
@@ -41,7 +38,6 @@ namespace CustomTilemap
             transform.parent = GetComponent<Transform>();
             transform.localPosition = new Vector3(position.x, position.y, 0);
             result.AddComponent<SpriteRenderer>();
-
             return result;
         }
     }

@@ -8,7 +8,6 @@ namespace CustomTilemap
         public int Count => _heights.Sum();
         public int Width => _heights.Length;
         public int Height => _heights.Max();
-
         private int[] _heights;
         private ICell _cell;
         public HeightMapBasedTilemap(int wigth, ICell cell)
@@ -32,7 +31,6 @@ namespace CustomTilemap
         public Vector2[] GetCloseMash()
         {
             const float _halfCellSize = 0.5f;
-
             List<Vector2> _points = new List<Vector2>();
             for (int x = 0; x < Width; x++)
             {

@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: New Ground Tile
   m_EditorClassIdentifier: Assembly-CSharp:CustomTilemap:GroundTile
-  Top: {fileID: 21300006, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  Left: {fileID: 21300028, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  Right: {fileID: 21300030, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  Bottom: {fileID: 21300036, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  TopLeft: {fileID: 21300000, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  TopRight: {fileID: 21300008, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  Other: {fileID: 21300044, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  BottomRight: {fileID: 21300040, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
-  BottomLeft: {fileID: 21300038, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  _sprites:
+  - {fileID: 21300110, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: 21300142, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: 21300144, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: 21300030, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: 21300028, guid: 1a08f9bec49c04809b03ba62a218b140, type: 3}
+  - {fileID: 21300204, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: 21300190, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: 21300206, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: 21300208, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  - {fileID: 21300232, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
