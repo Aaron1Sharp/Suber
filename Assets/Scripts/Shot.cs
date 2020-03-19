@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shot : MonoBehaviour
 {
-    //HealthBar _healthBar;
     public float _speed;
+    //HealthBar _healthBar;
     Transform player;
     Vector2 target;
     void Start()
     {
+        //_healthBar = GetComponent<HealthBar>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = new Vector2(player.position.x, player.position.y);
     }
@@ -20,18 +21,22 @@ public class Shot : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, _speed * Time.deltaTime);
         if (transform.position.x == target.x && transform.position.y == target.y) 
         {
+            Debug.Log("Enter");
             //_healthBar.FastAnimationHPbarAndTakeHealth();
             DestroyShot();
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player")||collision.CompareTag("ground")) 
+        if (!(collision.gameObject.name == "EnemyFollow"))
         {
-            //_healthBar.FastAnimationHPbarAndTakeHealth();
-            
             DestroyShot();
-        }  
+        }
+        else if (collision.gameObject.name == "Player")
+        {
+            Debug.Log("EnterTrigger");
+        }
     }
     void DestroyShot()
     {

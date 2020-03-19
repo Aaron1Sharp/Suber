@@ -8,7 +8,7 @@ namespace CustomTilemap
         public void Refresh(Vector2Int _position, ITileMap _tileMap, GameObject gameObject)
         {
             SpriteRenderer _CreatedTile = gameObject.GetComponent<SpriteRenderer>();
-            _CreatedTile.sprite = _sprites[new System.Random().Next(5, _sprites.Length)];
+            _CreatedTile.sprite = _sprites[new System.Random().Next(9, _sprites.Length)];
                  if (Exist(_position + Vector2Int.right, _tileMap)
                  &&  Exist(_position + Vector2Int.left,  _tileMap)
                  && !Exist(_position + Vector2Int.up,    _tileMap))

@@ -2,17 +2,17 @@
 using UnityEngine.SceneManagement;
 public class ControllerPlayer : MonoBehaviour
 {
+    [Range(0, 10)] public int _extraJumpValue;
     public float _speed, _jumpForse, _moveInput, _checkRadius;
-    public int _extraJumpValue;
     public bool _isGrounded;
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
     public GameObject _dustFromTheGround;
-    
+
+    [SerializeField] HealthBar healthBar;
     private bool _faceRight = true;
     private int _extraJump;
     private Rigidbody2D _rigidbody2D;
-    private EnemyFollow enemyFollow;
     void Start()
     {
         _extraJump = _extraJumpValue;
@@ -37,14 +37,7 @@ public class ControllerPlayer : MonoBehaviour
             _extraJump = _extraJumpValue;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
-        {
-            Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);
-            _rigidbody2D.velocity = Vector2.up * _jumpForse;
-            _extraJump--;
-        }
-
-        else
+        if (!Input.GetKeyDown(KeyCode.W) || _extraJump <= 0)
         {
             if (Input.GetKeyDown(KeyCode.W)
                 && _extraJump == 0
@@ -52,6 +45,13 @@ public class ControllerPlayer : MonoBehaviour
             {
                 _rigidbody2D.velocity = Vector2.up * _jumpForse;
             }
+        }
+
+        else
+        {
+            Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);
+            _rigidbody2D.velocity = Vector2.up * _jumpForse;
+            _extraJump--;
         }
     }
     void Flip()
@@ -72,11 +72,12 @@ public class ControllerPlayer : MonoBehaviour
             _extraJumpValue--;
         }
     }
-   /* public void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "EnemyFollow" && Input.GetKey(KeyCode.R)) 
+        if (collision.gameObject.layer == 9)  
         {
-            enemyFollow.TakeDamage();
+            healthBar.FastAnimationHPbarAndTakeHealth();
+            Debug.Log("ShotEnter");
         }
-    }*/
+    }
 }

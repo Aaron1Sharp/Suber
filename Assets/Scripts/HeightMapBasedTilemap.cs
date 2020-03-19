@@ -15,18 +15,24 @@ namespace CustomTilemap
             _heights = new int[wigth];
             _cell = cell;
         }
-        public void SetHeight(int x, int value)
+        public void SetHeight(int y, int value)
         {
-            if (x >= 0 || x < _heights.Length)
+            if (y >= 0 || y < _heights.Length)
             {
-                _heights[x] = value;
+                _heights[y] = value;
             }
-            else throw new System.ArgumentOutOfRangeException("x");
+            else
+                throw new System.ArgumentOutOfRangeException
+                    ("HeightMapBasedTilemap_SetHeight_Failed_18");
         }
         public ICell GetCell(Vector2Int _position)
         {
-            if (_position.x < 0 && _position.x >= _heights.Length) throw new System.ArgumentOutOfRangeException("x");
-            return _position.y > _heights[_position.x] ? null : _cell;
+            if (_position.x >= 0 || _position.x < _heights.Length)
+            {
+                return _position.y > _heights[_position.x] ? null : _cell;
+            }
+                throw new System.ArgumentOutOfRangeException
+                    ("HeightMapBasedTilemap_GetCell_Failed_26");
         }
         public Vector2[] GetCloseMash()
         {

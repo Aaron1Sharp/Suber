@@ -25,6 +25,7 @@ public class EnemyFollow : MonoBehaviour
             Instantiate(_projectTile,transform.position,Quaternion.identity);
             _timeBetweenShots = _startTimeBetween;
         }
+
         else
         {
             _timeBetweenShots -= Time.deltaTime;
@@ -34,18 +35,25 @@ public class EnemyFollow : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, FollowTarget.position,
                                                      _speedFollowEnemy * Time.deltaTime);
-        }      
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
+        if (collision.gameObject.name == "Player")
+        {
+            Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
+        }
+
         if (Input.GetKey(KeyCode.R))
         {
             TakeDamage();
+            Debug.Log("enemyfallow");
         }
-        else if(!Input.GetKey(KeyCode.R))
+
+        else if (!Input.GetKey(KeyCode.R) && collision.gameObject.name == "Player")
         {
             _healthBar.FastAnimationHPbarAndTakeHealth();
+            Debug.Log("meleeDamage");
         }
     }
     public void TakeDamage()

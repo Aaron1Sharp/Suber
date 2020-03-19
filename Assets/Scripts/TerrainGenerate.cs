@@ -5,7 +5,6 @@ public class TerrainGenerate : MonoBehaviour
 {
     public int Width;
     public GroundTile Tile;
-
     [SerializeField] private bool _isGenerateOnStart = false;
     public void Start()
     {
