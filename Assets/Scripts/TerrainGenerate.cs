@@ -1,16 +1,39 @@
 ﻿using UnityEngine;
 using CustomTilemap;
+using UnityEngine.SceneManagement;
 
 public class TerrainGenerate : MonoBehaviour
 {
     public int Width;
     public GroundTile Tile;
+    public float YesNo;
     [SerializeField] private bool _isGenerateOnStart = false;
+    Collider2D collider;
     public void Start()
     {
+        collider = GetComponent<Collider2D>();
+        collider.isTrigger = false;
+        InvokeRepeating("GenerateAndRender", 5, 5);
         if (_isGenerateOnStart)
         {  
             GenerateAndRender();
+        }
+    }
+    private void Update()
+    {
+        switch (collider.isTrigger)
+        {
+            case false:
+                YesNo = 0;
+                break;
+            default:
+                YesNo = 1;
+                break;
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            collider.isTrigger = !collider.isTrigger;
         }
     }
     public void GenerateAndRender()
@@ -32,5 +55,19 @@ public class TerrainGenerate : MonoBehaviour
             tilemap.SetHeight(x, _groundHeight);
         }
         return tilemap;
+    }
+   /* private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            SceneManager.LoadScene("Cuber");
+        }
+    }*/
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            SceneManager.LoadScene("Cuber");
+        }
     }
 }

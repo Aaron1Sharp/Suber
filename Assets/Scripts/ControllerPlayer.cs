@@ -8,7 +8,6 @@ public class ControllerPlayer : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
     public GameObject _dustFromTheGround;
-
     [SerializeField] HealthBar healthBar;
     private bool _faceRight = true;
     private int _extraJump;
@@ -36,7 +35,6 @@ public class ControllerPlayer : MonoBehaviour
         {
             _extraJump = _extraJumpValue;
         }
-
         if (!Input.GetKeyDown(KeyCode.W) || _extraJump <= 0)
         {
             if (Input.GetKeyDown(KeyCode.W)
@@ -46,7 +44,6 @@ public class ControllerPlayer : MonoBehaviour
                 _rigidbody2D.velocity = Vector2.up * _jumpForse;
             }
         }
-
         else
         {
             Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);

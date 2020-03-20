@@ -31,7 +31,6 @@ public class HealthBar : MonoBehaviour
             animator.speed -= _animatorSpeedPartValue;
         }
     }
-
     public void FastAnimationHPbarAndTakeHealth()
     {
         _fill -= _fillPathValue;

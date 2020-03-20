@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
-    //public float _retreatsDistance;
     public float _speedFollowEnemy;
     public float _stoppingDistance;
     public float healthEnemyFollow;
