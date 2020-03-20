@@ -8,7 +8,7 @@ public class TerrainGenerate : MonoBehaviour
     public GroundTile Tile;
     public float YesNo;
     [SerializeField] private bool _isGenerateOnStart = false;
-    Collider2D collider;
+    new Collider2D collider;
     public void Start()
     {
         collider = GetComponent<Collider2D>();
@@ -41,7 +41,15 @@ public class TerrainGenerate : MonoBehaviour
         ITileMap _tilemap = Generate();
         GetComponent<TilemapRender>().Render(_tilemap);
         GetComponent<PolygonCollider2D>().points = _tilemap.GetCloseMash();
+        collider.isTrigger = true;
+        Invoke("MethodColliderFalse", 2);
     }
+
+    private void MethodColliderFalse()
+    {
+        collider.isTrigger = false;
+    }
+
     public ITileMap Generate()
     {
         HeightMapBasedTilemap tilemap = new HeightMapBasedTilemap(Width, Tile);

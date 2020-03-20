@@ -64,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Demo\MoveBackground.cs" />
-    <Compile Include="Assets\RenderTerrain.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ControllerPlayer.cs" />
     <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
