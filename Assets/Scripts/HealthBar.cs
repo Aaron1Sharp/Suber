@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class HealthBar : MonoBehaviour
 {
     const float _fillPathValue = 0.1f;
@@ -11,19 +12,17 @@ public class HealthBar : MonoBehaviour
     public void Start()
     {
         _fill = 1f;
+        _canvas.SetActive(true);
         animator = GetComponent<Animator>();
         animator.speed = _animatorSpeedPartValue;
     }
     public void Update()
     {
         _HPBar.fillAmount = _fill;
+        HPBarDeative();
         if (Input.GetKeyDown(KeyCode.F))
         {
             FastAnimationHPbarAndTakeHealth();
-            if (_fill <= 0)
-            {
-                _canvas.SetActive(false);
-            }
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
@@ -31,6 +30,15 @@ public class HealthBar : MonoBehaviour
             animator.speed -= _animatorSpeedPartValue;
         }
     }
+
+    private void HPBarDeative()
+    {
+        if (_fill <= 0)
+        {
+            SceneManager.LoadScene("Main_menu");
+        }
+    }
+
     public void FastAnimationHPbarAndTakeHealth()
     {
         _fill -= _fillPathValue;

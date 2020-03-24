@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EasyMainMenu\Scripts\Editor\EMM_AddCanvases.cs" />
+    <Compile Include="Assets\EasyMainMenu\Scripts\Main Menu Scripts\Editor\MainMenuControllerEditor.cs" />
     <Compile Include="Assets\Editor\TerrainGeneratorInspector.cs" />
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>

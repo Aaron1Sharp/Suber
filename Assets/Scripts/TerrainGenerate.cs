@@ -75,6 +75,7 @@ public class TerrainGenerate : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            Debug.Log("RestartTerrainExeptions");
             SceneManager.LoadScene("Cuber");
         }
     }
