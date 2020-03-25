@@ -76,7 +76,9 @@
     <Compile Include="Assets\Scripts\ICell.cs" />
     <Compile Include="Assets\Scripts\ITileMap.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
+    <Compile Include="Assets\Scripts\Scrolling.cs" />
     <Compile Include="Assets\Scripts\Shot.cs" />
     <Compile Include="Assets\Scripts\TerrainGenerate.cs" />
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
