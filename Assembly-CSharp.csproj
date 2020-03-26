@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\DestroyEnemy.cs" />
     <Compile Include="Assets\Scripts\DestroyObject.cs" />
     <Compile Include="Assets\Scripts\EnemyFollow.cs" />
+    <Compile Include="Assets\Scripts\FallingPlatform.cs" />
     <Compile Include="Assets\Scripts\GroundTile.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\HeightMapBasedTilemap.cs" />
