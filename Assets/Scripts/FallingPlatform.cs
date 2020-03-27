@@ -23,7 +23,8 @@ public class FallingPlatform : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.name.Equals("Player") || collision.gameObject.CompareTag("ground")) && _moveingBack == false) 
+        if ((collision.gameObject.name.Equals("Player")|| collision.gameObject.CompareTag("ground")) 
+            && _moveingBack == false) 
         {
             Invoke("FallPlatform", 2f);
         }   
