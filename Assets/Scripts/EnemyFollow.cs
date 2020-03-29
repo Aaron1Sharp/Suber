@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
-    public float _speedFollowEnemy;
-    public float _stoppingDistance;
-    public float healthEnemyFollow;
-    public float _startTimeBetween;
+    public float _speedFollowEnemy, _stoppingDistance, healthEnemyFollow, _startTimeBetween;
     public GameObject EnemyBloodPS;
     public GameObject _projectTile;
     public HealthBar _healthBar;
+    public Animator ShakeCamera;
     float _timeBetweenShots;
     Transform FollowTarget;
     public void Start()
@@ -41,9 +39,10 @@ public class EnemyFollow : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
+            ShakeCameraMethod();
         }
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.R) && collision.gameObject.name == "Player") 
         {
             TakeDamage();
             Debug.Log("enemyfallow");
@@ -62,6 +61,10 @@ public class EnemyFollow : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public void ShakeCameraMethod()
+    {
+        ShakeCamera.SetTrigger("Shake");
     }
 }
 /*
