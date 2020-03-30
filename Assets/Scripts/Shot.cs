@@ -21,7 +21,7 @@ public class Shot : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, target, _speed * Time.deltaTime);
         if (transform.position.x == target.x && transform.position.y == target.y) 
         {
-            Debug.Log("Enter");
+            Debug.Log("Shot");
             //_healthBar.FastAnimationHPbarAndTakeHealth();
             DestroyShot();
         }

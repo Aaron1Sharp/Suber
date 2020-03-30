@@ -39,7 +39,8 @@ public class EnemyFollow : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
-            ShakeCameraMethod();
+            Debug.Log("Баг ");
+            ShakeCamera.SetTrigger("Shake");
         }
 
         if (Input.GetKey(KeyCode.R) && collision.gameObject.name == "Player") 

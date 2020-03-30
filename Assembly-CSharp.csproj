@@ -83,10 +83,12 @@
     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
     <Compile Include="Assets\Scripts\Scrolling.cs" />
     <Compile Include="Assets\Scripts\Shot.cs" />
+    <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
     <Compile Include="Assets\Scripts\TerrainGenerate.cs" />
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Compile Include="Assets\Scripts\hea.cs" />
+    <Compile Include="Assets\ShakeCamera.cs" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Contact.txt" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Lisense.txt" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\readme.txt" />
