@@ -3,7 +3,7 @@ public class FallingPlatform : MonoBehaviour
 {
     Rigidbody2D _rigidbody2D;
     Vector2 _currentPosition;
-    bool _moveingBack;
+    bool _isMoveBack;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -11,23 +11,34 @@ public class FallingPlatform : MonoBehaviour
     }
     private void Update()
     {
-        if (_moveingBack == true)
+        if (_isMoveBack == true)
         {
             transform.position = Vector2.MoveTowards(transform.position, _currentPosition, 20f * Time.deltaTime);
         }
 
-        if (transform.position.y == _currentPosition.y)
+        if ((transform.position.y == _currentPosition.y) && (transform.position.x == _currentPosition.x))
         {
-            _moveingBack = false;
+            _isMoveBack = false;
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.name.Equals("Player")|| collision.gameObject.CompareTag("ground")) 
-            && _moveingBack == false) 
+        if ((collision.gameObject.name.Equals("Player")|| collision.gameObject.CompareTag("ground")) && _isMoveBack == false) 
         {
             Invoke("FallPlatform", 2f);
-        }   
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.parent = transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.parent = null;
+        }
     }
         void FallPlatform()
         {
@@ -39,6 +50,6 @@ public class FallingPlatform : MonoBehaviour
         {
             _rigidbody2D.velocity = Vector2.zero;
             _rigidbody2D.isKinematic = true;
-            _moveingBack = true;
+            _isMoveBack = true;
         }
 }

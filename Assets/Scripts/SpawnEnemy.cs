@@ -15,14 +15,22 @@ public class SpawnEnemy : MonoBehaviour
         _camera = GetComponent<Camera>();
     }
 
-    private void Update()
+    private void FixedUpdate()
+    {
+        if (GameObject.FindGameObjectsWithTag("EnemyFly").Length < 3)
+        {
+            Spawn(_enemy, 16, 20);
+        }
+    }
+
+    private void Spawn(GameObject gameObject, float _positionX, float _positionY)
     {
         if (Time.time > _nextSpawn)
         {
             _nextSpawn = Time.time + _spawnRate;
-            _randomX = Random.Range(_camera.transform.position.x - 16, _camera.transform.position.x + 16);
-            _whereToSpawn = new Vector2(_randomX, _camera.transform.position.y + 20);
-            Instantiate(_enemy, _whereToSpawn, Quaternion.identity);
+            _randomX = Random.Range(_camera.transform.position.x - _positionX, _camera.transform.position.x + _positionX);
+            _whereToSpawn = new Vector2(_randomX, _camera.transform.position.y + _positionY);
+            Instantiate(gameObject, _whereToSpawn, Quaternion.identity);
         }
     }
 }
