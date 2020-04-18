@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FPS : MonoBehaviour
 {
+
     GUIStyle style = new GUIStyle();
     int accumulator = 0;
     int counter = 0;
@@ -11,18 +12,23 @@ public class FPS : MonoBehaviour
 
     void Start()
     {
+
         style.normal.textColor = Color.green;
         style.fontSize = 32;
         style.fontStyle = FontStyle.Bold;
+
     }
 
     void OnGUI()
     {
+
         GUI.Label(new Rect(10, 10, 100, 34), "FPS: " + counter, style);
+
     }
 
     void Update()
     {
+
         accumulator++;
         timer += Time.deltaTime;
 
@@ -32,5 +38,6 @@ public class FPS : MonoBehaviour
             counter = accumulator;
             accumulator = 0;
         }
+
     }
 }

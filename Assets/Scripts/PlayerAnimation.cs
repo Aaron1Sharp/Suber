@@ -8,8 +8,8 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
-    }
-    void Update()
+    } 
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
@@ -21,7 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.W))
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetTrigger("jump");
         }    
     }
 }

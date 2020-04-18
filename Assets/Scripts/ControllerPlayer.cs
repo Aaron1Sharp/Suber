@@ -8,57 +8,87 @@ public class ControllerPlayer : MonoBehaviour
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
     public GameObject _dustFromTheGround;
-    [SerializeField] HealthBar healthBar;
+    public HealthBar _healthBar;
+
+    private Animator _animator;
     private bool _faceRight = true;
     private int _extraJump;
     private Rigidbody2D _rigidbody2D;
     void Start()
     {
-        _extraJump = _extraJumpValue;
+        _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _extraJump = _extraJumpValue;
     }
+
     void FixedUpdate()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _whatIsGround);
         _moveInput = Input.GetAxis("Horizontal");
         _rigidbody2D.velocity = new Vector2(_moveInput * _speed, _rigidbody2D.velocity.y);
-        if (_faceRight == false && _moveInput > 0
-         || _faceRight == true && _moveInput < 0)
+        if (_faceRight == false && _moveInput > 0 || _faceRight == true && _moveInput < 0)
         {
             Flip();
         }
     }
+
     void Update()
     {
+
         JumpCounter();
         if (_isGrounded == true)
         {
-            _extraJump = _extraJumpValue;
-        }
-        if (!Input.GetKeyDown(KeyCode.W) || _extraJump <= 0)
-        {
-            if (Input.GetKeyDown(KeyCode.W)
-                && _extraJump == 0
-                && _isGrounded == true)
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
-                _rigidbody2D.velocity = Vector2.up * _jumpForse;
+                _animator.SetBool("isWalk", true);
             }
+            else
+            {
+                _animator.SetBool("isWalk", false);
+            }
+            _extraJump = _extraJumpValue;
         }
         else
         {
+            _animator.SetBool("isWalk", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) && _extraJump > 0)
+        {
             Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);
             _rigidbody2D.velocity = Vector2.up * _jumpForse;
+            //_animator.SetBool("jump_bool", true);
+            _animator.SetTrigger("jump");
             _extraJump--;
         }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.W) && _extraJump == 0 && _isGrounded == true)
+            {
+                _animator.SetTrigger("jump");
+                _rigidbody2D.velocity = Vector2.up * _jumpForse;
+            }
+        }
     }
-    void Flip()
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 9)  
+        {
+            _healthBar.TakeHealth();
+            Debug.Log("Урон от фаербола");
+        }
+    }
+
+    private void Flip()
     {
         _faceRight = !_faceRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-    void JumpCounter()
+
+    private void JumpCounter()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -69,12 +99,5 @@ public class ControllerPlayer : MonoBehaviour
             _extraJumpValue--;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 9)  
-        {
-            healthBar.FastAnimationHPbarAndTakeHealth();
-            Debug.Log("ShotEnter");
-        }
-    }
+
 }

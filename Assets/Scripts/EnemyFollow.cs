@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
+
     public float _speedFollowEnemy, _stoppingDistance, healthEnemyFollow, _startTimeBetween;
     public GameObject EnemyBloodPS;
     public GameObject _projectTile;
     public HealthBar _healthBar;
-    public Animator ShakeCamera;
+    public Animator _ShakeCamera;
     float _timeBetweenShots;
     Transform FollowTarget;
+    Animator _animator;
+
     public void Start()
     {
+        
+        _animator = GetComponent<Animator>();
         FollowTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         healthEnemyFollow = 1f;
+        _animator.SetBool("IsIdle", true);
         _timeBetweenShots = _startTimeBetween;
+
     }
 
     public void Update()
     {
+
         if (_timeBetweenShots <= 0)
         {
+            
+            _animator.SetTrigger("Attack");
             Instantiate(_projectTile,transform.position,Quaternion.identity);
             _timeBetweenShots = _startTimeBetween;
         }
@@ -33,39 +43,42 @@ public class EnemyFollow : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, FollowTarget.position,
                                                      _speedFollowEnemy * Time.deltaTime);
         }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
-        {
-            Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
-            Debug.Log("Баг ");
-            ShakeCamera.SetTrigger("Shake");
-        }
 
         if (Input.GetKey(KeyCode.R) && collision.gameObject.name == "Player") 
         {
+            ShakeAndBloodMade();
             TakeDamage();
-            Debug.Log("enemyfallow");
         }
 
         else if (!Input.GetKey(KeyCode.R) && collision.gameObject.name == "Player")
         {
-            _healthBar.FastAnimationHPbarAndTakeHealth();
-            Debug.Log("meleeDamage");
+            ShakeAndBloodMade();
+            _healthBar.TakeHealth();
         }
+
     }
+
+    private void ShakeAndBloodMade()
+    {
+
+        Instantiate(EnemyBloodPS, transform.position, Quaternion.identity);
+        _ShakeCamera.SetTrigger("Shake");
+
+    }
+
     public void TakeDamage()
     {
+
         healthEnemyFollow -= 0.3f;
         if (healthEnemyFollow <= 0)
         {
             Destroy(gameObject);
         }
-    }
-    public void ShakeCameraMethod()
-    {
-        ShakeCamera.SetTrigger("Shake");
+
     }
 }
 /*

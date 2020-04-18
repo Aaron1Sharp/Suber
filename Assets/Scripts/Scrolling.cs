@@ -61,8 +61,6 @@ public class Scrolling : MonoBehaviour
             _rightIndex = Layers.Length - 1;
     }
 
-
-
     private void ScrollRight()
     {
         Layers[_leftIndex].position = Vector3.right * (Layers[_rightIndex].position.x + _backGroundSize);

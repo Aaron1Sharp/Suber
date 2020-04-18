@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Compile Include="Assets\Scripts\hea.cs" />
+    <Compile Include="Assets\scr.cs" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Contact.txt" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Lisense.txt" />
     <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\readme.txt" />
@@ -123,6 +124,12 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

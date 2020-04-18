@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 public class CirclePlatform : MonoBehaviour
 {
+
     [SerializeField]
     Transform _center;
     [SerializeField]
     float _radius = 2f, _angularSpeed = 2f;
     float _positionX, _positionY, _angle = 0f;
+
     void FixedUpdate()
     {
         
@@ -20,13 +22,17 @@ public class CirclePlatform : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player"))
             collision.transform.parent = transform;    
+
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player"))
             collision.transform.parent = null;
+
     }
 }
 
