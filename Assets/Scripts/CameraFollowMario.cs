@@ -2,10 +2,11 @@
 
 public class CameraFollowMario : MonoBehaviour
 {
-
+#pragma warning disable 0649
+#pragma warning disable 0108
+    public float speed = 3f;
     public GameObject _followObject;
     public Vector2 followOffset;
-    public float speed = 3f;
     private Vector2 threshold;  
     private Rigidbody2D rigidbody;
     [SerializeField]
@@ -76,10 +77,8 @@ public class CameraFollowMario : MonoBehaviour
 
     }
 
-    private void DrawGizmosLine(float sideA, float sideB,float sideC, float sideD)
+    public void DrawGizmosLine(float sideA, float sideB,float sideC, float sideD)
     {
-
         Gizmos.DrawLine(new Vector2(sideA, sideC), new Vector2(sideB, sideD));
-
     }
 }

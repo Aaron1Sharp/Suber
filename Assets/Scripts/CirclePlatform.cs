@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 public class CirclePlatform : MonoBehaviour
 {
-
+#pragma warning disable 0649
     [SerializeField]
-    Transform _center;
+    private Transform _center;
     [SerializeField]
     float _radius = 2f, _angularSpeed = 2f;
     float _positionX, _positionY, _angle = 0f;

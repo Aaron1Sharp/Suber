@@ -201,6 +201,7 @@ MonoBehaviour:
   _jumpForse: 7
   _moveInput: 0
   _checkRadius: 0.5
+  _damage: 6
   _isGrounded: 0
   _groundCheck: {fileID: 8488209024339437553}
   _whatIsGround:
@@ -209,6 +210,7 @@ MonoBehaviour:
   _dustFromTheGround: {fileID: 1187017880128906340, guid: f71a460875990cd4380e87ce9ac1ef8b,
     type: 3}
   _healthBar: {fileID: 0}
+  enemyFollow: {fileID: 0}
 --- !u!114 &8488209024775135107
 MonoBehaviour:
   m_ObjectHideFlags: 0

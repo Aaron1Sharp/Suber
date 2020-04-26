@@ -39,8 +39,6 @@ public class Shot : MonoBehaviour
 
     void DestroyShot()
     {
-
         Destroy(gameObject);
-
     }
 }

@@ -59,6 +59,7 @@ public class CameraController : MonoBehaviour
                 _dumping * Time.deltaTime);
             transform.position = _currentPosition;
         }
+
     }
 
 }

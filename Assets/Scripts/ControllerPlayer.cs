@@ -3,17 +3,18 @@ using UnityEngine.SceneManagement;
 public class ControllerPlayer : MonoBehaviour
 {
     [Range(0, 10)] public int _extraJumpValue;
-    public float _speed, _jumpForse, _moveInput, _checkRadius;
+    public float _speed, _jumpForse, _moveInput, _checkRadius,_damage;
     public bool _isGrounded;
     public Transform _groundCheck;
     public LayerMask _whatIsGround;
     public GameObject _dustFromTheGround;
     public HealthBar _healthBar;
 
-    private Animator _animator;
     private bool _faceRight = true;
     private int _extraJump;
+    private Animator _animator;
     private Rigidbody2D _rigidbody2D;
+
     void Start()
     {
         _animator = GetComponent<Animator>();
@@ -33,8 +34,7 @@ public class ControllerPlayer : MonoBehaviour
     }
 
     void Update()
-    {
-
+    {      
         JumpCounter();
         if (_isGrounded == true)
         {
@@ -42,12 +42,14 @@ public class ControllerPlayer : MonoBehaviour
             {
                 _animator.SetBool("isWalk", true);
             }
+
             else
             {
                 _animator.SetBool("isWalk", false);
             }
             _extraJump = _extraJumpValue;
         }
+
         else
         {
             _animator.SetBool("isWalk", false);
@@ -57,10 +59,10 @@ public class ControllerPlayer : MonoBehaviour
         {
             Instantiate(_dustFromTheGround, transform.position, Quaternion.identity);
             _rigidbody2D.velocity = Vector2.up * _jumpForse;
-            //_animator.SetBool("jump_bool", true);
             _animator.SetTrigger("jump");
             _extraJump--;
         }
+
         else
         {
             if (Input.GetKeyDown(KeyCode.W) && _extraJump == 0 && _isGrounded == true)
@@ -71,12 +73,16 @@ public class ControllerPlayer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 9)  
+        if (Input.GetKey(KeyCode.R) && collision.CompareTag("EnemyFly"))
+        {
+            Destroy(collision.gameObject);           
+        }
+
+        else if (!Input.GetKey(KeyCode.R) && collision.CompareTag("EnemyFly"))
         {
             _healthBar.TakeHealth();
-            Debug.Log("Урон от фаербола");
         }
     }
 
@@ -94,6 +100,7 @@ public class ControllerPlayer : MonoBehaviour
         {
             _extraJumpValue++;
         }
+
         else if (Input.GetKeyDown(KeyCode.Q) && _extraJumpValue != 0)
         {
             _extraJumpValue--;

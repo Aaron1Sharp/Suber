@@ -7,11 +7,11 @@ public class HealthBar : MonoBehaviour
     const float _fillPathValue = 0.1f;
     const float _animatorSpeedPartValue = 0.05f;
     public float _fill;
-    Animator animator;
+    public Animator animator;
     public Image _HPBar;
     public GameObject _canvas;
 
-    public void Start()
+    void Start()
     {
 
         _fill = 1f;
@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
         animator.speed = _animatorSpeedPartValue;
 
     }
-    public void Update()
+    void Update()
     {
 
         _HPBar.fillAmount = _fill;
@@ -37,7 +37,7 @@ public class HealthBar : MonoBehaviour
 
     }
 
-    private void HPBarDeative()
+    public void HPBarDeative()
     {
 
         if (_fill <= 0)
