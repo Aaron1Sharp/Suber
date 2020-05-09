@@ -6,6 +6,11 @@ public class DieTrigger : MonoBehaviour
     [SerializeField]
     private HealthBar HealthBar;
 
-    private void OnTriggerStay2D(Collider2D collision) => HealthBar.TakeHealth();
-
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+           HealthBar.TakeHealth();
+        }
+    }
 }

@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\GroundTile.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\HeightMapBasedTilemap.cs" />
+    <Compile Include="Assets\Scripts\HighScoreScript.cs" />
     <Compile Include="Assets\Scripts\ICell.cs" />
     <Compile Include="Assets\Scripts\ITileMap.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />

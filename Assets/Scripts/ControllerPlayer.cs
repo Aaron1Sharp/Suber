@@ -15,8 +15,11 @@ public class ControllerPlayer : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody2D;
 
+    public UnityEngine.Object explosion;
+
     void Start()
     {
+        //explosion = Resources.Load("Explosion");
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _extraJump = _extraJumpValue;
@@ -77,7 +80,11 @@ public class ControllerPlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.R) && collision.CompareTag("EnemyFly"))
         {
-            Destroy(collision.gameObject);           
+
+            Destroy(collision.gameObject);
+            GameObject explosionRef = (GameObject)Instantiate(explosion);
+            explosionRef.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
         }
 
         else if (!Input.GetKey(KeyCode.R) && collision.CompareTag("EnemyFly"))

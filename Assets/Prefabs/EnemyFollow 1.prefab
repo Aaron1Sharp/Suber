@@ -55,11 +55,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedFollowEnemy: 8
   _stoppingDistance: 15
+  _stoppingDistanceWithEnemy: 0
   _startTimeBetween: 2
   damage: 0.4
+  _retreatsDistance: 7
   EnemyBloodPS: {fileID: 8635366782243758046}
   _projectTile: {fileID: 5304757050787249999, guid: e934677cd641008408b5ee97c03a0174,
     type: 3}
+  EnemyTurn: {fileID: 8635366782243758023}
 --- !u!212 &8635366782243758017
 SpriteRenderer:
   m_ObjectHideFlags: 0
