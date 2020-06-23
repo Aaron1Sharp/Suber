@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Cuber.unity
+- path: Assets/Scenes/Cuber.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

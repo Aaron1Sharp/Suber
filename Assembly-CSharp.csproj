@@ -63,9 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EasyMainMenu\Scripts\Main Menu Scripts\MainMenuController.cs" />
-    <Compile Include="Assets\FPS.cs" />
-    <Compile Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Demo\MoveBackground.cs" />
+    <Compile Include="Assets\Prefabs\EasyMainMenu\Scripts\Main Menu Scripts\MainMenuController.cs" />
+    <Compile Include="Assets\Prefabs\Tile\Asset from market\Free Pixel Art Forest\Demo\MoveBackground.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraFollowMario.cs" />
     <Compile Include="Assets\Scripts\CirclePlatform.cs" />
@@ -93,10 +92,9 @@
     <Compile Include="Assets\Scripts\TilemapRender.cs" />
     <Compile Include="Assets\Scripts\WallSlider.cs" />
     <Compile Include="Assets\Scripts\hea.cs" />
-    <Compile Include="Assets\scr.cs" />
-    <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Contact.txt" />
-    <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\Lisense.txt" />
-    <None Include="Assets\Prefabs\Tile\Free Pixel Art Forest\readme.txt" />
+    <None Include="Assets\Prefabs\Tile\Asset from market\Free Pixel Art Forest\Contact.txt" />
+    <None Include="Assets\Prefabs\Tile\Asset from market\Free Pixel Art Forest\Lisense.txt" />
+    <None Include="Assets\Prefabs\Tile\Asset from market\Free Pixel Art Forest\readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Aaron/Suber/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

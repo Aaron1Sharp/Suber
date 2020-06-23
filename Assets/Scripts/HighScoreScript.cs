@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class HighScoreScript : MonoBehaviour
 {
-    public static HighScoreScript inctance; 
+    private const string Key = "SaveScore";
+    public static HighScoreScript inctance;
 
     public Text score, highScore;
     public int scoreCounter, highScoreCounter;
@@ -13,7 +14,7 @@ public class HighScoreScript : MonoBehaviour
         inctance = this;
 
         if (PlayerPrefs.HasKey("SaveScore"))
-        { 
+        {
             highScoreCounter = PlayerPrefs.GetInt("SaveScore");
         }
     }
@@ -25,17 +26,20 @@ public class HighScoreScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-           inctance.AddScore();
+            inctance.AddScore();
         }
-         
+
 
     }
 
     public void AddScore()
     {
+
         scoreCounter++;
         HighScore();
+        
     }
+
     public void HighScore()
     {
         if (scoreCounter > highScoreCounter)
